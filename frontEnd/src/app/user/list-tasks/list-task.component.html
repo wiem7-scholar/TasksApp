@@ -27,7 +27,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of tasks | orderBy : key: reverse | search: searchValue | paginate: { 
+    <tr *ngFor="let user of tasks | orderBy : key: reverse | search: searchValue | paginate: {
       itemsPerPage: 5,
       currentPage: p,
       totalItems: total } ">
@@ -36,7 +36,7 @@
       <td>{{user.name}}</td>
       <td>{{user.description}}</td>
       <td>{{user.created}}</td>
-      
+
       <td style="text-align: center;">  <button id="btnAdjust" (click)="deleteTask(user.id)" class="btn btn-primary"> </button></td>
        <td style="text-align: center;" > <button id="btnAdjust" (click)="updateTask(user.id)" class="btn btn-secondary"></button>
 
@@ -51,9 +51,10 @@
   <button (click)="deleteFoodSelected()" class="btn btn-danger" >Delete Selected Tasks</button>
 
   </div>
-  <div style="padding-left: 40%;">
+  <div *ngIf="tasks.length()>5" style="padding-left: 40%;">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
-  
-  
+
+
   </div>
+</div>
