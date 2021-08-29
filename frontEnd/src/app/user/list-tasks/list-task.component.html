@@ -1,0 +1,59 @@
+<div class="wrapper" >
+  <div class="search-results">
+  <div style="margin-left:10px; margin-top:10px;">
+    <br>
+    <h1 style="text-align:center">Created Tasks</h1>
+    <br>
+    <br>
+</div>
+<div class="form-group row"></div>
+      <div class="form-group row" style="padding-left: 15%;">
+        <label for="search" class="col-sm-2 col-form-label" style="text-align:right;">Search</label>
+        <div class="col-sm-6">
+          <input type="text" [(ngModel)]="searchValue"class="form-control" id="search"/>
+        </div>
+      </div>
+      <br>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th (click)="sort('id')">ID&nbsp;<i class="fa fa-sort" style="color:black"></i></th>
+      <th (click)="sort('name')">Task Name &nbsp;<i class="fa fa-sort" style="color:black"></i></th>
+      <th (click)="sort('description')">Task Description&nbsp;<i class="fa fa-sort" style="color:black"></i></th>
+      <th (click)="sort('created')">Created&nbsp;<i class="fa fa-sort" style="color:black"></i></th>
+      <th style="text-align: center;">Delete</th>
+      <th style="text-align: center;">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of tasks | orderBy : key: reverse | search: searchValue | paginate: { 
+      itemsPerPage: 5,
+      currentPage: p,
+      totalItems: total } ">
+      <td><input #{{user.selected}} [(ngModel)]="user.selected" type="checkbox"></td>
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.description}}</td>
+      <td>{{user.created}}</td>
+      
+      <td style="text-align: center;">  <button id="btnAdjust" (click)="deleteTask(user.id)" class="btn btn-primary"> </button></td>
+       <td style="text-align: center;" > <button id="btnAdjust" (click)="updateTask(user.id)" class="btn btn-secondary"></button>
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br> <br>
+<div style="text-align: left; padding-left: 21%;">
+  <a href="addT" class="btn btn-dark" >Add a new Task </a>
+  <button (click)="deleteFoodSelected()" class="btn btn-danger" >Delete Selected Tasks</button>
+
+  </div>
+  <div style="padding-left: 40%;">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  
+  
+  </div>

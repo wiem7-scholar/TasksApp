@@ -1,0 +1,25 @@
+<br>
+<div  style="width: 400px; margin:0 auto;">
+  <h3 style="text-align: center;">Add New Task</h3>
+  <form (ngSubmit)="save()">
+    <div class="form-group">
+      <label for="name">Name of the Task </label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="rayon.name" name="name"/>
+    </div>
+    <div class="form-group">
+      <label for="description">Task's Description</label>
+      <input type="text" class="form-control" id="description" required [(ngModel)]="rayon.description" name="description"/>
+    </div>
+    
+    
+  
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <button id="btnAdjust" type="submit" class="btn btn-danger" >Submit</button>
+        <a href="tasks" class="btn btn-primary">Retour</a>
+
+      </div>
+    </div>
+    
+  </form>
+</div>
